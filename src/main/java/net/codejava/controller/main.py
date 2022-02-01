@@ -25,7 +25,7 @@ print(p)
 video_capture = cv2.VideoCapture(0)
 # address = "http://192.168.0.102:8080/video" # [from mobile camera]
 # video_capture.open(address)
-path = "C:\\Users\\Themysticlees\\Desktop\\Springboot vote new\\user-photos\\"
+path = "user-photos\\"
 path1 = path+sys.argv[1]+"\\"+p
 sou_image = face_recognition.load_image_file(path1)
 sou_image = cv2.cvtColor(sou_image, cv2.COLOR_RGB2BGR)
@@ -86,13 +86,13 @@ cv2.destroyAllWindows()
 if var == 1:
     print("match")
     text_file = open(
-        "C:\\Users\\Themysticlees\\Desktop\\Springboot vote new\\src\\main\\resources\\templates/out.txt", "w")
+        "src\\main\\resources\\templates/out.txt", "w")
     text_file.write(sys.argv[1] + " 1")
     text_file.close()
 
 else:
     print("not match")
     text_file = open(
-        "C:\\Users\\Themysticlees\\Desktop\\Springboot vote new\\src\\main\\resources\\templates/out.txt", "w")
+        "src\\main\\resources\\templates/out.txt", "w")
     text_file.write(sys.argv[1] + " 0")
     text_file.close()
