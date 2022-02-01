@@ -69,7 +69,7 @@ while True:
 
     if cv2.waitKey(10) & 0xFF == ord('k'):
 
-        if (name1 == n):
+        if (name1 == n and len(face_location)!=0):
             print(name1)
             var = 1
             # time.sleep(10)
