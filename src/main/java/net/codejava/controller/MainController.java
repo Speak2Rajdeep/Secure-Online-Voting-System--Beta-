@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,11 +24,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.http.ResponseEntity;
 import net.codejava.helper.Message;
+import net.codejava.model.Pending;
 import net.codejava.model.User;
+import net.codejava.repository.PendingRepo;
 import net.codejava.repository.UserRepo;
 import net.codejava.service.EmailService;
 import net.codejava.service.UserService;
+
 
 // --------------------------------------------------------------------------------------------- //
 
@@ -60,8 +68,7 @@ public class MainController {
 		return "redirect:/public/home";
 	}
 
-	// --------------------------------------------------------------------------------------------------------------
-	// //
+	//--------------------------------------------------------------------------------------------------------------//
 
 	// This url will return the home page of our website
 	@GetMapping("/index")
@@ -81,15 +88,24 @@ public class MainController {
 		return "contact.html";
 	}
 
-	// This url will be executed when a new user tries to register with a existing
-	// username
-	@GetMapping("/usernameexist")
-	public String usernameexist() {
-		return "exist.html";
+	
+	// 	public ResponseEntity<String> error(){
+	// 		System.out.println("Error page................");
+	// 		String content =  
+    //        "<header>"
+    //      + "<h1><span>Url is not reachable from</span></h1>"+"</header>";
+	// 	 HttpHeaders responseHeaders = new HttpHeaders();
+    // 	responseHeaders.setContentType(MediaType.TEXT_HTML);
+	// 	return new ResponseEntity<String>(content,responseHeaders,HttpStatus.BAD_REQUEST);
+	// }
+	
+	@GetMapping("/error")
+	public String errormethod(){
+		return "error1.html";
 	}
+	
 
-	// ----------------------REGISTER(GET)--------------------------------------------------------------
-	// //
+	// ----------------------REGISTER(GET)--------------------------------------------------------// 
 
 	// This url will be executed when users tries to register
 	@GetMapping("/register")
@@ -98,8 +114,8 @@ public class MainController {
 		// We are using model to store the list of gender and listates
 		// These data will be used in the register page
 
-		User user = new User();
-		model.addAttribute("user", user);
+		Pending pending = new Pending();
+		model.addAttribute("pending", pending);
 
 		List<String> listgender = Arrays.asList("Choose", "Male", "Female", "Others");
 		model.addAttribute("listgender", listgender);
@@ -108,7 +124,7 @@ public class MainController {
 				"West Bengal");
 		model.addAttribute("liststates", liststates);
 
-		return "register_new";
+		return "register_new.html";
 	}
 
 	// ----------------------REGISTER(POST)--------------------------------------------------------------
@@ -122,42 +138,49 @@ public class MainController {
 	// model, the application
 	// will automatically fill the parameters with the details given by user.
 
+	@Autowired
+	PendingRepo pendingRepo;
+
 	@PostMapping("/register")
-	public String submitForm(@ModelAttribute("user") User user,
+	public String submitForm(@ModelAttribute("pending") Pending pending,
 			@RequestParam("image") MultipartFile multipartFile) throws IOException {
 
 		// Checking if username already exists
-		if (!(userservice.userExists(user.getUsername()))) {
+		if (!(userservice.userExists(pending.getUsername()))) {
 			String fileName = multipartFile.getOriginalFilename();
 
 			// String Adhar=user.getUsername();
 
-			user.setRole("ROLE_USER");
+			pending.setRole("ROLE_USER");
 
 			// decrypting the password before putting it in the db
-			user.setPassword(passwordEncoder.encode(user.getPassword()));
+			pending.setPassword(passwordEncoder.encode(pending.getPassword()));
 
 			// we are also storing the filename in db and storing the file in our local HD
-			user.setPhotos(fileName);
+			pending.setPhotos(fileName);
 
 			// saving the user in the database
 			// repo is the bean of User repository
 
-			User savedUser = repo.save(user);
+			Pending UserPending = pendingRepo.save(pending);
 			// Storing the entire path of the file
-			String uploadDir = "user-photos/" + savedUser.getUsername();
+			String uploadDir = "user-photos/" + UserPending.getUsername();
 
 			// saving the file
 			FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
-			System.out.println(user);
+			System.out.println(pending);
+			
 
-			return "redirect:/index";
-			// return "index.html";
-		} else {
-			// if username already exists, then return this url
-			return "redirect:/usernameexist";
+		return "redirect:/index";
 		}
+		// return "index.html";
+		else {
+			System.out.println("******* User exist **********");
+		//if username already exists, then return this page
+		return "exist.html";
+		}
+
 	}
 
 	// ----------------------UPDATE(POST)--------------------------------------------------------------
@@ -216,10 +239,10 @@ public class MainController {
 	}
 
 	// This will return the error page
-	@GetMapping("/error")
-	public String errorpage() {
-		return "error.html";
-	}
+	// @GetMapping("/error")
+	// public String errorpage() {
+	// 	return "error.html";
+	// }
 
 	// ---------------------send mail from contact us (Bug is there)
 	// ------------------------------------------------- //

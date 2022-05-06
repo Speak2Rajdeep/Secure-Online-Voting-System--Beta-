@@ -165,7 +165,7 @@ public class HomeController {
 			// String email=(String)session.getAttribute("email");
 			System.out.println("succesfull");
 
-			return "vote.html";
+			return "redirect:/vote/votepage";
 		}
 		// if otp not match then user will automatically logout \\
 		return "redirect:/logout";

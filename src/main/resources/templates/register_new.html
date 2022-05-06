@@ -89,7 +89,7 @@
 
                 <a th:href="@{'/index'}">Log in</a> here.
             </p>
-            <form class="row g-3" style="margin: 10px 20px" th:action="@{/register}" method="post" th:object="${user}" enctype="multipart/form-data">
+            <form class="row g-3" style="margin: 10px 20px" th:action="@{/register}" method="post" th:object="${pending}" enctype="multipart/form-data">
                 <div>
                     <div class="col">
                         <label for="inputEmail4" class="form-label">First Name</label>

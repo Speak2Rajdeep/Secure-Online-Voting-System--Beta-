@@ -202,6 +202,7 @@
 
       
       <div class="table-responsive">
+        <a th:href="@{'/users/pending'}"><button>Pending Users </button></a>
         <table cellpadding="10" class="table table-hover">
             <thead>
                 <tr>
@@ -221,7 +222,7 @@
                         <td th:text="${user.lastname}">Last Name</td>
                         <td th:text="${user.email}">Email ID</td>
                         <td>
-                            <a th:href="@{'/users/removeFile/'+${user.username}+'/'+${user.photos}}" onclick="return confirm('Are you sure you want to delete + ${user.username}?');"><button  class="thm-btn static-banner-one__form-btn" style="padding: 10px;">Delete</button> </a>
+                            <a th:href="@{'/users/removeFile/'+${user.username}+'/'+${user.photos}}" onclick="confirm('Are you sure you want to delete?');"><button  class="thm-btn static-banner-one__form-btn" style="padding: 10px;">Delete</button> </a>
                             
                         </td>
 

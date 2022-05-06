@@ -6,7 +6,10 @@ import java.util.*;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import net.codejava.model.Pending;
 import net.codejava.model.User;
+import net.codejava.repository.PendingRepo;
 import net.codejava.repository.UserRepo;
 
 @Service
@@ -15,6 +18,9 @@ public class UserService {
 	@Autowired
 	UserRepo repo;
 	
+	@Autowired
+	PendingRepo pending;
+
 	List<User> list = new ArrayList<>();
 
 	/*public UserSecurityService() {
@@ -26,6 +32,14 @@ public class UserService {
 	//get all users
 	public List<User> getAllUsers(){
 		return repo.findAll();
+	}
+
+	public List<Pending> getAllPendingUsers(){
+		return pending.findAll();
+	}
+	public Pending getPendingUser(String username){
+		Pending user = pending.findByUsername(username);
+		return user;
 	}
 	
 	//get single user

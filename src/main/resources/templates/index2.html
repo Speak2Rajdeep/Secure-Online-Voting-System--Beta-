@@ -168,7 +168,21 @@
         </nav>
       </header>
       <!-- /.site-header -->
+      
+      <div th:if="${session.status}">
+        <div
+          th:classappend="${'alert-'+ session.status.type}"
+          class="alert text-center"
+          role="alert"
+        >
+          <h1><span th:text="${session.status.content}"></span></h1>
+        </div>
+
+        <th:block th:text="${#session.removeAttribute('status')}"></th:block>
+      </div>
+
       <section class="static-banner-one">
+
         <div class="static-banner-one__bg">
           <div class="static-banner-one__bg-inner"></div>
           <!-- /.static-banner-one__bg-inner -->
