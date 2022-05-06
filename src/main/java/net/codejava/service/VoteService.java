@@ -27,7 +27,10 @@ public class VoteService {
 
     public boolean isSuccessfull(String choice, String adhhar, String name) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 
-        if(smartcontract.checkTable()){
+        //correct table
+        if(!smartcontract.checkTable())
+            smartcontract.correctTableValues();
+        
         Votedata lastEntry = voterepo.findLastEntry();
         System.out.println(lastEntry);
         System.out.println(adhhar+"-----"+name+"-----"+choice+"-----"+lastEntry.getCurrhash());
@@ -43,13 +46,21 @@ public class VoteService {
         vote.setDate(date);
         System.out.println("*************** Vote Saved*********************");
         voterepo.save(vote);
-        return true;
+        voterepo.copyData(vote.getUsername(), vote.getCurrhash(), vote.getDate(), vote.getPrevhash());
+        //voterepo.copyData();
+        //copy table to clone table
         
-        }
-        // Implement database copy function
-        System.out.println("*************** Vote Not Saved*********************");
-        return false;
-
+        // return true;
+        
+        // }
+        // // Implement database copy function
+        // else{
+            
+        //     System.out.println("*************** Vote Not Saved*********************");
+        //     return false;
+        // }
+    
+        return true;
     }
 
     public boolean userExists(String username) {

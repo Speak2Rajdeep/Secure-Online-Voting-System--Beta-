@@ -19,7 +19,7 @@ public class SHA256 {
 
         password+=prevHash;
 
-        System.out.println(password.toString());
+        //System.out.println(password.toString());
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         byte[] hashInBytes = md.digest(password.getBytes(StandardCharsets.UTF_8));
 

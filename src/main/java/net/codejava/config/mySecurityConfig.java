@@ -22,8 +22,8 @@ public class mySecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 			.csrf().disable()
 			.authorizeRequests()
-			.antMatchers("/index","/register","/js/**","/css/**","/fonts/**","/images/**","/inc/**","/scss/**","/plugin/**","/templates/register","/SweetAlert/**","/Register","/error","/forgotpassword/**","/news","/contact", "/sendemail","/videos/**","/vote/**").permitAll()
-			.antMatchers("/public/**").hasRole("USER")//only people with role user can access these pages
+			.antMatchers("/index","/register","/js/**","/css/**","/fonts/**","/images/**","/inc/**","/scss/**","/plugin/**","/templates/register","/SweetAlert/**","/Register","/error","/forgotpassword/**","/news","/contact", "/sendemail","/videos/**").permitAll()
+			.antMatchers("/public/**","/vote/**").hasRole("USER")//only people with role user can access these pages
 			.antMatchers("/users/**").hasRole("ADMIN")
 			//.antMatchers("/public/**").permitAll() doesnt authenticate these pages
 			.anyRequest()

@@ -45,12 +45,11 @@ public class VoteSmartContract {
             String name=user.getFirstname();
 
             int f=0;
-
             for(String i:party){
                 String[] transaction = {adhaar,name,i};
                 String tempHash= SHA256.getSHA(transaction,previousBlockHash);
 
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>"+tempHash);
+                System.out.println(">>>>>>>>>>>Temp Hash Generated>>>>>>>>>>>>>>"+tempHash);
                 if(tempHash.equals(currBlockHash) && previousBlockHash.equals(tempPrevHash)){
                     f=1;
                     break;
@@ -58,13 +57,22 @@ public class VoteSmartContract {
             }
 
             if(f==0){
-                System.out.println("Tampering Found");
+                System.out.println("Tampering Found at " +adhaar);
+                System.out.println("Original current hash "+currBlockHash);
                 return false;
             }
 
             tempPrevHash=currBlockHash;
         }
         return true;
+    }
+
+    public void correctTableValues(){
+        
+        System.out.println("Rectifying the values ! Please wait !");
+        vrepo.deleteAll();
+        vrepo.copyData();
+        System.out.println("Data is now rectified ! Enjoy");
     }
 
 }

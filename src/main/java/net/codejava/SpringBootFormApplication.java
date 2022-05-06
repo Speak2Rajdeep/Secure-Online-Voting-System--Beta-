@@ -59,7 +59,9 @@ public class SpringBootFormApplication implements CommandLineRunner {
 		initialvote.setCurrhash(candidateHash);
 		Date date = new Date();
 		initialvote.setDate(date);
-		//this.voteRepo.save(initialvote);
+		// this.voteRepo.save(initialvote);
+		// voteRepo.copyData();
+		//voteRepo.copyData(initialvote.getUsername(), initialvote.getCurrhash(), initialvote.getDate(), initialvote.getPrevhash());
 		
 		// System.out.println(firstPartyBlock.hashCode());
 		// blockchain1.add(candidate);
