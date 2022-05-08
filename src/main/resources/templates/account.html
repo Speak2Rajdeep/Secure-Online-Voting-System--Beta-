@@ -129,6 +129,7 @@
                       margin-right: 10px;
                       margin-top: 10px;
                       font-weight: bolder;
+                      color: black;
                     "
                     th:text="${currentUser.Firstname}"
                     >&npsp</span
@@ -160,7 +161,7 @@
     <section>
       <section class="inner-banner" style="height: 300px">
         <div class="container">
-          <h2 class="inner-banner__title">Account Settings</h2>
+          <h2 class="inner-banner__title" >Account Settings</h2>
           <!-- /.inner-banner__title -->
           <ul class="list-unstyled thm-breadcrumb">
             <li><a href="index.html">Home</a></li>
@@ -182,10 +183,10 @@
 
           <th:block th:text="${#session.removeAttribute('message')}"></th:block>
         </div>
-
-        <div class="bg-white shadow rounded-lg d-block d-sm-flex">
+<div class="aaa">
+        <div class="bg-white  rounded-lg d-block d-sm-flex" id="abc">
           <div class="profile-tab-nav border-right">
-            <div class="p-4">
+            <div class="p-4" style="border-radius: 10px;">
               <div class="img-circle text-center mb-3">
                 <img
                   th:src="${currentUser.photosImagePath}"
@@ -217,7 +218,7 @@
                 Account
               </a>
               <a
-                class="nav-link"
+                class="nav-link" style=""
                 id="password-tab"
                 data-toggle="pill"
                 href="#password"
@@ -259,7 +260,7 @@
                 aria-controls="notification"
                 aria-selected="false"
               >
-                <i class="fa fa-bell text-center mr-1"></i> Notification
+                <i class="fa fa-bell text-center mr-1" ></i> Notification
               </a>
             </div>
           </div>
@@ -277,11 +278,11 @@
                 enctype="multipart/form-data"
               >
                 <!-- Account Settings Fields-->
-                <h3 class="mb-4">Account Settings</h3>
+                <h3 class="mb-4"  style="color:black; position: center;">Account Settings</h3>
 
                 <div class="row">
                   <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group"  style="color:black">
                       <label>First Name</label>
                       <input
                         type="text"
@@ -292,7 +293,7 @@
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group"  style="color:black">
                       <label>Last Name</label>
                       <input
                         type="text"
@@ -303,7 +304,7 @@
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group"  style="color:black">
                       <label for="inputAddress" class="form-label"
                         >Adhaar No.</label
                       >
@@ -320,7 +321,7 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="inputAddress" class="form-label"
+                      <label for="inputAddress" class="form-label"  style="color:black"
                         >Password</label
                       >
                       <input
@@ -336,7 +337,7 @@
                   </div>
 
                   <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group"  style="color:black">
                       <label>Email</label>
                       <input
                         type="text"
@@ -348,7 +349,7 @@
                   </div>
 
                   <div class="col-md-6">
-                    <label for="inputDOB" class="form-label"
+                    <label for="inputDOB" class="form-label"  style="color:black"
                       >Date of Birth</label
                     >
                     <input
@@ -361,7 +362,7 @@
                   </div>
 
                   <div class="col-md-4">
-                    <label for="inputZip" class="form-label">Zip</label>
+                    <label for="inputZip" class="form-label"  style="color:black">Zip</label>
                     <input
                       type="text"
                       th:name="zip"
@@ -371,7 +372,7 @@
                     />
                   </div>
                   <div class="col-md-8">
-                    <div class="form-group">
+                    <div class="form-group"  style="color:black">
                       <label>Phone number</label>
                       <input
                         type="text"
@@ -381,8 +382,8 @@
                       />
                     </div>
                   </div>
-                  <div div class="col-12">
-                    <label>Photos: </label>
+                  <div div class="col-12"  style="color:black">
+                    <label>Photos:  </label>
                     <input
                       th:value="${currentUser.photos}"
                       th:name="image"
@@ -404,7 +405,7 @@
                     </p>
                   </div>
                   <div class="col-md-4">
-                    <div class="form-group">
+                    <div class="form-group"  style="color:black">
                       <label>Gender</label>
                       <input
                         type="text"
@@ -415,7 +416,7 @@
                     </div>
                   </div>
                   <div class="col-md-8">
-                    <div class="form-group">
+                    <div class="form-group"  style="color:black">
                       <label>Address</label>
                       <input
                         type="text"
@@ -426,7 +427,7 @@
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group"  style="color:black">
                       <label>State</label>
                       <input
                         type="text"
@@ -437,7 +438,7 @@
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group"  style="color:black">
                       <label>City</label>
                       <input
                         type="text"
@@ -466,10 +467,10 @@
               aria-labelledby="password-tab"
             >
               <form th:action="@{update/update_password}" method="post">
-                <h3 class="mb-4">Password Settings</h3>
+                <h3 class="mb-4"  style="color:black">Password Settings</h3>
                 <div class="row">
                   <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group"  style="color:black">
                       <label>Old password</label>
                       <input
                         id="oldPassword"
@@ -487,7 +488,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group"  style="color:black">
                       <label>New password</label>
                       <input
                         name="newPassword"
@@ -501,9 +502,9 @@
                         style="top: 5px"
                       />  Show Password
                     </div>
-                  </div>
+                  </div><br><br>
                   <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group"  style="color:black">
                       <label>Confirm new password</label>
                       <input
                         name="oldPassword"
@@ -523,6 +524,7 @@
                   <button type="submit" class="btn btn-primary">Update</button>
                   <button type="reset" class="btn btn-light">Cancel</button>
                 </div>
+                
               </form>
             </div>
             <div
@@ -531,16 +533,16 @@
               role="tabpanel"
               aria-labelledby="security-tab"
             >
-              <h3 class="mb-4">Security Settings</h3>
+              <h3 class="mb-4"  style="color:black">Security Settings</h3>
               <div class="row">
                 <div class="col-md-6">
-                  <div class="form-group">
+                  <div class="form-group"  style="color:black">
                     <label>Login</label>
                     <input type="text" class="form-control" />
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="form-group">
+                  <div class="form-group"  style="color:black">
                     <label>Two-factor auth</label>
                     <input type="text" class="form-control" />
                   </div>
@@ -554,7 +556,7 @@
                         value=""
                         id="recovery"
                       />
-                      <label class="form-check-label" for="recovery">
+                      <label class="form-check-label"  style="color:black" for="recovery">
                         Recovery
                       </label>
                     </div>
@@ -572,7 +574,7 @@
               role="tabpanel"
               aria-labelledby="application-tab"
             >
-              <h3 class="mb-4">Application Settings</h3>
+              <h3 class="mb-4" style="color:black" >Application Settings</h3>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -583,7 +585,7 @@
                         value=""
                         id="app-check"
                       />
-                      <label class="form-check-label" for="app-check">
+                      <label class="form-check-label"  style="color:black" for="app-check">
                         App check
                       </label>
                     </div>
@@ -594,7 +596,7 @@
                         value=""
                         id="defaultCheck2"
                       />
-                      <label class="form-check-label" for="defaultCheck2">
+                      <label class="form-check-label" style="color:black" for="defaultCheck2">
                         Lorem ipsum dolor sit.
                       </label>
                     </div>
@@ -607,61 +609,57 @@
               </div>
             </div>
             <div
-              class="tab-pane fade"
+              class="tab-pane "
               id="notification"
               role="tabpanel"
               aria-labelledby="notification-tab"
             >
-              <h3 class="mb-4">Notification Settings</h3>
-              <div class="form-group">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="notification1"
-                  />
-                  <label class="form-check-label" for="notification1">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolorum accusantium accusamus, neque cupiditate quis
-                  </label>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="notification2"
-                  />
-                  <label class="form-check-label" for="notification2">
-                    hic nesciunt repellat perferendis voluptatum totam porro
-                    eligendi.
-                  </label>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="notification3"
-                  />
-                  <label class="form-check-label" for="notification3">
-                    commodi fugiat molestiae tempora corporis. Sed dignissimos
-                    suscipit
-                  </label>
-                </div>
-              </div>
-              <div>
-                <button class="btn btn-primary">Update</button>
-                <button class="btn btn-light">Cancel</button>
-              </div>
+              <h3 class="mb-4" style="color:black">Notification</h3>
+              
+                  
+                    
+              
+              
+                    <div class="c">
+                      <div class="alert alert-dark  alert-dismissible " role="alert">
+                        <span class="text-sm">A simple primary alert with an
+                            example link. Give it a click if you like.</span>
+                        
+                          
+                      </div>
+                      <div class="alert alert-info alert-dismissible " role="alert">
+                        <span class="text-sm">A simple secondary alert with an
+                            example link. Give it a click if you like.</span>
+                       
+                          
+                      </div>
+                      <div class="alert alert-success alert-dismissible " role="alert">
+                        <span class="text-sm">A simple success alert with an
+                            example link. Give it a click if you like.</span>
+                        
+                          
+                      </div>
+                      <div class="alert alert-danger alert-dismissible" role="alert">
+                        <span class="text-sm">A simple danger alert withan
+                            example link. Give it a click if you like.</span>
+                        
+                        
+                      </div>
+                      <div class="alert alert-warning alert-dismissible" role="alert">
+                        <span class="text-sm">A simple warning alert with an
+                            example link. Give it a click if you like.</span>
+                        
+                      </div>
+                      <div class="alert alert-primary alert-dismissible" role="alert">
+                        <span class="text-sm">A simple warning alert with an
+                          example link. Give it a click if you like.</span>
+                      
+                      </div>
+                      
+                    </div>
             </div>
           </div>
-        </div>
+        </div></div>
       </div>
     </section>
 
@@ -670,6 +668,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
  
     <!-- Show Password checkbox -->
+    
+
     
     <script>
 
